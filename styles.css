@@ -1,0 +1,124 @@
+/* Pumpkin Patch — haunted garden theme */
+:root {
+  --night: #0d0a1a;
+  --soil: #1a1025;
+  --soil-2: #241a33;
+  --pumpkin: #ff7a1a;
+  --pumpkin-deep: #e05e00;
+  --ghost: #f5f0ff;
+  --moon: #ffe9a3;
+  --vine: #4ade80;
+  --tomb: #8a8a9e;
+  --ink: #f2ecff;
+  --muted: #b9aed6;
+}
+* { box-sizing: border-box; }
+html { background: var(--night); }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -10%, #2a1b4d 0%, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 90% 110%, #1c1030 0%, transparent 70%),
+    var(--night);
+  min-height: 100vh;
+}
+.pp-fog {
+  position: fixed; left: -10%; right: -10%; height: 180px;
+  background: linear-gradient(180deg, transparent, rgba(185, 174, 214, 0.06), transparent);
+  pointer-events: none; z-index: 0;
+}
+.pp-fog-a { top: 22%; animation: pp-drift 26s linear infinite; }
+.pp-fog-b { top: 62%; animation: pp-drift 34s linear infinite reverse; }
+@keyframes pp-drift { from { transform: translateX(-4%); } to { transform: translateX(4%); } }
+.pp-wrap { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 28px 18px 48px; }
+
+.pp-header { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-start; }
+.pp-title {
+  font-family: Creepster, "Comic Sans MS", cursive;
+  font-size: clamp(42px, 7vw, 64px);
+  line-height: 1; margin: 0;
+  color: var(--pumpkin);
+  text-shadow: 0 0 24px rgba(255, 122, 26, 0.45);
+  letter-spacing: 1px;
+}
+.pp-tagline { color: var(--muted); margin: 10px 0 0; font-size: 16px; }
+.pp-moonbox { text-align: center; }
+.pp-moon { width: 84px; height: 84px; margin: 0 auto; }
+.pp-moon-svg { width: 100%; height: 100%; }
+.pp-moon-label { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+
+.pp-ghostbar {
+  display: flex; gap: 16px; align-items: center;
+  background: var(--soil); border: 1px solid #33244d; border-radius: 16px;
+  padding: 12px 18px; margin: 22px 0 14px;
+}
+.pp-ghost { width: 64px; height: 64px; flex: none; animation: pp-float 4s ease-in-out infinite; }
+.pp-ghost-svg { width: 100%; height: 100%; }
+@keyframes pp-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.pp-haunt { font-size: 17px; font-style: italic; color: var(--ghost); margin: 0; }
+
+.pp-stats {
+  display: flex; flex-wrap: wrap; gap: 10px 22px;
+  color: var(--muted); font-size: 15px; margin: 4px 0 18px;
+}
+.pp-stats b { color: var(--ink); }
+
+.pp-plantbox { background: var(--soil); border: 1px solid #33244d; border-radius: 16px; padding: 18px; margin-bottom: 26px; }
+.pp-label { display: block; font-weight: 800; margin-bottom: 8px; }
+.pp-formrow { display: flex; gap: 10px; }
+.pp-input {
+  flex: 1; min-width: 0; padding: 12px 14px; font-size: 16px;
+  background: var(--night); color: var(--ink);
+  border: 1px solid #4a3670; border-radius: 10px; outline: none;
+}
+.pp-input:focus { border-color: var(--pumpkin); box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.25); }
+.pp-error { color: #ff9d9d; min-height: 1.2em; margin: 8px 0 0; font-size: 14px; }
+.pp-rules { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
+
+.pp-btn {
+  padding: 11px 18px; font-size: 15px; font-weight: 700; cursor: pointer;
+  color: #1a1025; background: var(--vine); border: none; border-radius: 10px;
+}
+.pp-btn:hover:not(:disabled) { filter: brightness(1.1); }
+.pp-btn:disabled { opacity: 0.55; cursor: default; }
+.pp-plant-btn { background: var(--pumpkin); }
+.pp-harvest { background: var(--moon); margin-left: 8px; }
+.pp-revive { background: var(--ghost); padding: 8px 14px; font-size: 14px; }
+
+.pp-section {
+  font-family: Creepster, "Comic Sans MS", cursive;
+  font-size: 30px; color: var(--pumpkin); margin: 26px 0 12px; letter-spacing: 1px;
+}
+.pp-sub { color: var(--muted); margin: -6px 0 14px; font-size: 14px; }
+.pp-garden, .pp-graveyard { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.pp-empty {
+  grid-column: 1 / -1; color: var(--muted); text-align: center;
+  border: 1px dashed #4a3670; border-radius: 14px; padding: 28px 16px;
+}
+.pp-card {
+  background: var(--soil); border: 1px solid #33244d; border-radius: 16px;
+  padding: 16px; text-align: center;
+}
+.pp-card.pp-ready { border-color: var(--pumpkin); box-shadow: 0 0 22px rgba(255, 122, 26, 0.35); }
+.pp-card.pp-wilted { filter: saturate(0.5); }
+.pp-plant { height: 120px; }
+.pp-art { width: 120px; height: 120px; }
+.pp-name { margin: 6px 0 2px; font-size: 18px; overflow-wrap: anywhere; }
+.pp-stage { color: var(--muted); margin: 0 0 12px; font-size: 14px; }
+.pp-wilt { color: #ffb3c1; font-size: 13px; margin: 0 0 10px; }
+.pp-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; }
+
+.pp-tomb {
+  background: #14101f; border: 1px solid #2c2c3d; border-radius: 16px;
+  padding: 16px; text-align: center;
+}
+.pp-tomb-name { margin: 6px 0 2px; font-size: 16px; color: var(--tomb); }
+.pp-epitaph { color: var(--muted); font-style: italic; font-size: 14px; margin: 4px 0 8px; }
+.pp-tomb-meta { color: #6f6f85; font-size: 12px; margin: 0 0 12px; }
+.pp-footer { color: #6f6f85; font-size: 13px; text-align: center; margin-top: 40px; }
+@media (max-width: 560px) {
+  .pp-formrow { flex-direction: column; }
+  .pp-ghostbar { flex-direction: column; text-align: center; }
+}
