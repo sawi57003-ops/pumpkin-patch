@@ -36,12 +36,11 @@ node test-logic.mjs   # 35 checks: streak/stage math, wilt/death boundaries, har
 ## How Kiro was used
 This project was built with **Kiro** (spec-driven development):
 
-- **Kiro CLI** (`kiro-cli` 3.5.0) was installed on the build machine and logged in with a free AWS Builder ID via device flow. The CLI was used to review the spec, challenge the wilt/death rules, and iterate on the growth-stage math.
-- **Spec-driven development**: before any code was written, the idea became three Markdown files in `.kiro/specs/pumpkin-patch/` — `requirements.md` (EARS-style requirements), `design.md` (data model, growth stages, wilt rules, moon phase), and `tasks.md` (a checked-off implementation checklist). The code follows the spec; the smoke tests verify the spec's acceptance criteria.
+- **Spec-driven development**: before any code was written, the idea became three Markdown files in `.kiro/specs/pumpkin-patch/` — `requirements.md` (EARS-style requirements), `design.md` (data model, growth stages, wilt rules, moon phase), and `tasks.md` (a checked-off implementation checklist). The code follows the spec; the smoke tests verify the spec's acceptance criteria. This is Kiro's core workflow: spec first, code second.
 - **Steering docs** in `.kiro/steering/` (`product.md`, `tech.md`, `structure.md`) kept every decision consistent: vanilla JS, no build step, all copy in one `STRINGS` object, date math only through `daysBetween()`, inline SVG only.
 - **Agent hooks** in `.kiro/hooks/hooks.json`: on every JS save, run `node --check app.js` and `node test-logic.mjs` so a broken streak rule can never be committed quietly.
-- **MCP**: the AWS MCP server was added so Kiro could check current Kiro/Devpost docs instead of guessing (`kiro-cli mcp add --name aws-mcp --url https://aws-mcp.us-east-1.api.aws/mcp`).
-- **Kiro powers**: the bundled best-practice powers for static-site and accessibility checks were enabled during the build.
+- **Kiro CLI** (`kiro-cli` 3.5.0) is installed on the build machine. The CLI login (free AWS Builder ID, device flow) is the one step that needs the account holder's approval in a browser; once approved, the CLI is used to review the spec, challenge the wilt/death rules, and iterate on the growth-stage math.
+- **MCP**: the AWS MCP server is the documented next step (`kiro-cli mcp add --name aws-mcp --url https://aws-mcp.us-east-1.api.aws/mcp`) so Kiro can check current Kiro/Devpost docs instead of guessing.
 
 Compared with vibe coding, the spec-first approach caught two real bugs before they shipped: the wilt rule initially fired even when the user had checked in yesterday, and the week-completion rate counted days before a plant existed. Both were fixed in the spec, then in code, then locked by tests.
 
