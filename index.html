@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pumpkin Patch — a habit garden</title>
+<meta name="description" content="Pumpkin Patch: grow habits like pumpkins in a haunted garden. Check in daily, harvest at 7 days, and keep your plants out of the graveyard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="pp-fog pp-fog-a"></div>
+<div class="pp-fog pp-fog-b"></div>
+<main class="pp-wrap">
+  <header class="pp-header">
+    <div>
+      <h1 class="pp-title">🎃 Pumpkin Patch</h1>
+      <p class="pp-tagline">Grow habits like pumpkins. Miss a day, and the garden notices.</p>
+    </div>
+    <div class="pp-moonbox">
+      <div id="moon" class="pp-moon" aria-hidden="true"></div>
+      <p id="moon-label" class="pp-moon-label">Moon: new · 0% this week</p>
+    </div>
+  </header>
+
+  <section class="pp-ghostbar">
+    <div id="ghost" class="pp-ghost" aria-hidden="true"></div>
+    <p id="haunt" class="pp-haunt">The garden remembers. Water it daily.</p>
+  </section>
+
+  <section class="pp-stats" id="stats" aria-live="polite"></section>
+
+  <section class="pp-plantbox">
+    <form id="plant-form" class="pp-form">
+      <label class="pp-label" for="habit-name">Plant a habit</label>
+      <div class="pp-formrow">
+        <input id="habit-name" class="pp-input" type="text" maxlength="60"
+          placeholder="e.g. Read 20 pages" autocomplete="off">
+        <button class="pp-btn pp-plant-btn" type="submit">Plant 🌱</button>
+      </div>
+      <p id="plant-error" class="pp-error" role="alert"></p>
+    </form>
+    <p class="pp-rules">Check in once a day to grow. 7 days in a row → harvest a pumpkin.
+      Miss 1 day → it wilts. Miss 2 → it joins the graveyard.</p>
+  </section>
+
+  <section>
+    <h2 class="pp-section">Your garden</h2>
+    <div id="garden" class="pp-garden"></div>
+  </section>
+
+  <section>
+    <h2 class="pp-section">🪦 The Graveyard</h2>
+    <p class="pp-sub">Habits that wilted away. Revive one and it sprouts again.</p>
+    <div id="graveyard" class="pp-graveyard"></div>
+  </section>
+
+  <footer class="pp-footer">
+    <p>Pumpkin Patch — built for Kiroween 2026 (Costume Contest). Your garden lives only in this browser (localStorage). No account, no tracking, no backend.</p>
+  </footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
