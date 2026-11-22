@@ -1,0 +1,1 @@
+{"hooks":[{"commands":["node --check app.js","node test-logic.mjs"],"description":"Syntax-check app.js and run the logic smoke tests whenever a JS file is saved.","event":"onFileSave","match":["app.js","test-logic.mjs"],"name":"verify-on-save"}]}
